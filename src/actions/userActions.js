@@ -4,10 +4,10 @@ export const login = (url, email, password) => {
     return async function(dispatch) {
         dispatch(loginRequest(email, password));
 
-        const requestOptions = { 
+        const requestOptions = {
             method: "POST",
             headers: {  "Content-Type": "application/json" },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 email,
                 password
             })
@@ -21,6 +21,9 @@ export const login = (url, email, password) => {
         } else {
             dispatch(loginFailure("Wrong username or password."));
         }
+        /** REVIEW: Можно лучше:
+        *   Нужно обработать ошибки запроса
+        **/
     }
 }
 
@@ -45,6 +48,10 @@ export const loginFailure = ()=> {
     }
 }
 
+/** REVIEW: Можно лучше:
+*   url лучше зашить, врядли ли он будет часто меняться
+ *   вообще когда в функцию передается больше 2 параметров это повод задуматься обьединить их в обьект
+**/
 export const registration = (url, email, password) => {
     return async function(dispatch) {
         dispatch(registrationRequest(email, password));
@@ -52,7 +59,7 @@ export const registration = (url, email, password) => {
         const requestOptions = {
             method: "POST",
             headers: {  "Content-Type": "application/json" },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 email,
                 password
             }),
@@ -66,6 +73,9 @@ export const registration = (url, email, password) => {
         } else {
             dispatch(registrationSuccess());
         }
+        /** REVIEW: Можно лучше:
+         *   Нужно обработать ошибки запроса
+         **/
     }
 }
 
@@ -77,6 +87,10 @@ export const registrationRequest = (email, password) => {
     }
 }
 
+/** REVIEW: Можно лучше:
+ *  в одну строку
+*   export const registrationSuccess = () => ({ type: actionTypes.registrationSuccess })
+**/
 export const registrationSuccess = () => {
     return {
         type: actionTypes.registrationSuccess

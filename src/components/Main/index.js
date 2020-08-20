@@ -10,6 +10,9 @@ import NoMatch from "../../pages/NoMatchPage";
 export default function Main() {
     return (
         <div className="main">
+            /** REVIEW: Можно лучше:
+            *   а тут нужен вообще этот див? стили класса main кстати нигде не описаны
+            **/
             <Container>
                 <Menu>
                     <Menu.Item

@@ -11,22 +11,26 @@ export default function(state = initialState, action) {
     switch(action.type) {
         case actionTypes.loginRequest:
             return {
-                ...state, 
+                ...state,
                 curentStatus: userStatuses.loggingIn
             };
 
-        case actionTypes.loginSuccess: 
+        case actionTypes.loginSuccess:
+            /** REVIEW: Можно лучше:
+            *   Работу с ls нужно обернуть в try/catch
+             *  И лучше вообще вынести в санки, это сайд эффект
+            **/
             localStorage.setItem("email", action.email);
             localStorage.setItem("password", action.password);
 
             return {
-                ...state, 
+                ...state,
                 isLoggedIn: true,
                 curentStatus: userStatuses.loggedIn,
                 userType: action.userType
             };
 
-        case actionTypes.loginFailure: 
+        case actionTypes.loginFailure:
             return {
                 ...state,
                 curentStatus: userStatuses.loginFailed
@@ -38,22 +42,22 @@ export default function(state = initialState, action) {
                 curentStatus: userStatuses.registerRequest
             };
 
-        case actionTypes.registerSuccess: 
+        case actionTypes.registerSuccess:
             return {
-                ...state, 
+                ...state,
                 curentStatus: userStatuses.registerSuccess
             };
 
-        case actionTypes.registerFailure: 
+        case actionTypes.registerFailure:
             return {
                 ...state,
                 curentStatus: userStatuses.registerFailed
             };
 
-        case actionTypes.logout: 
+        case actionTypes.logout:
             return initialState;
 
-        default: 
+        default:
             return state;
     }
 }

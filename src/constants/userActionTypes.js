@@ -1,4 +1,4 @@
-// A user example: 
+// A user example:
 // {
 //     name: string,
 //     surname: string,
@@ -11,12 +11,18 @@
 //     loggedIn: boolean
 //     shoppingCart: object|array,
 // }
+/** REVIEW: Можно лучше:
+*   а зачем тут схема данных юзера?
+**/
 
 export default {
+
     registrationRequest: "USER_registration_REQUEST",
     registrationSuccess: "USER_registration_SUCCESS",
     registrationFailure: "USER_registration_FAILURE",
-
+    /** REVIEW: Можно лучше:
+    *   отбивка пробелами внутри обьекта выглядит странно, обычно такое eslint не дает делать
+    **/
     loginRequest: "USER_LOGIN_REQUEST",
     loginSuccess: "USER_LOGIN_SUCCESS",
     loginFailure: "USER_LOGIN_FAILURE",
